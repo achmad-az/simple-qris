@@ -215,7 +215,7 @@ function qris_payment_form_shortcode($atts) {
             
             <div class="form-group">
                 <label for="amount">Amount (IDR)</label>
-                <input type="number" id="amount" name="amount" required min="1000" placeholder="Minimum IDR 1,000">
+                <input type="number" id="amount" name="amount" required min="10000" placeholder="Minimum IDR 10,000">
             </div>
             
             <button type="submit" class="qris-submit-btn">
@@ -298,7 +298,7 @@ function handle_generate_qris() {
     
     $amount = isset($_POST['amount']) ? floatval($_POST['amount']) : 0;
     
-    if ($amount < 1000) {
+    if ($amount < 10000) {
         wp_send_json_error(array(
             'message' => 'Minimum amount is IDR 1,000'
         ));
